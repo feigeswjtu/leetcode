@@ -17,14 +17,14 @@ public class GenerateCodeUtil {
 
             file.mkdir();
 
-            file = new File(path + "/Solution.java");
+            file = new File(path + "/SolutionTest.java");
             file.createNewFile();
 
 
             InputStream in = null;
             OutputStream out = null;
             try {
-                in = new FileInputStream(new File("/Users/chenyafei/workspace/project/java/leetcode/src/main/java/Solution.java"));
+                in = new FileInputStream(new File("/Users/chenyafei/workspace/project/java/leetcode/src/test/java/SolutionTest.java"));
                 out = new FileOutputStream(file);
                 out.write(packageName.getBytes());
                 out.write("\n".getBytes());
