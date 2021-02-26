@@ -1,4 +1,4 @@
-package code1twosum;
+package code1;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

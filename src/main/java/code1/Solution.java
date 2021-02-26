@@ -1,4 +1,4 @@
-package code1twosum;
+package code1;
 
 /**
  * @author feigeswjtu.cyf

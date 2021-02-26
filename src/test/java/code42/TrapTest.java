@@ -1,4 +1,4 @@
-package code42trappingrainwate;
+package code42;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

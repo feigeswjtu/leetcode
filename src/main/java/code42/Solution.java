@@ -1,4 +1,4 @@
-package code42trappingrainwate;
+package code42;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
