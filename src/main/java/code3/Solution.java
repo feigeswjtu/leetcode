@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * 无重复字符的最长子串
+ *
  * @author feigeswjtu.cyf
  * @version $Id: Solution.java, v 0.1 2021-02-26 00:53 feigeswjtu.cyf Exp $$
  */

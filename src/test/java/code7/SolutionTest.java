@@ -1,5 +1,6 @@
 package code7;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
@@ -9,5 +10,8 @@ import org.testng.annotations.Test;
 public class SolutionTest {
     @Test
     public void test(){
+        Solution solution = new Solution();
+        int reverse = solution.reverse(123);
+        Assert.assertEquals(reverse, 321);
     }
 }

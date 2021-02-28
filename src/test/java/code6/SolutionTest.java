@@ -1,5 +1,6 @@
 package code6;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
@@ -9,5 +10,17 @@ import org.testng.annotations.Test;
 public class SolutionTest {
     @Test
     public void test(){
+        String s = "PAYPALISHIRING";
+        Solution solution = new Solution();
+        String convert = solution.convert(s, 3);
+        Assert.assertEquals(convert, "PAHNAPLSIIGYIR");
+    }
+
+    @Test
+    public void test1(){
+        String s = "A";
+        Solution solution = new Solution();
+        String convert = solution.convert(s, 1);
+        Assert.assertEquals(convert, "PAHNAPLSIIGYIR");
     }
 }

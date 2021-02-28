@@ -9,5 +9,17 @@ import org.testng.annotations.Test;
 public class SolutionTest {
     @Test
     public void test(){
+        ListNode head = new ListNode();
+        ListNode headTemp = head;
+        for (int i = 1; i < 1; i++) {
+            headTemp.val = i;
+            headTemp.next = new ListNode();
+            headTemp = headTemp.next;
+        }
+        headTemp.val = 7;
+
+        Solution solution = new Solution();
+        ListNode listNode = solution.rotateRight(head, 0);
+        System.out.println(listNode);
     }
 }

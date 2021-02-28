@@ -1,5 +1,6 @@
 package code11;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
@@ -8,6 +9,11 @@ import org.testng.annotations.Test;
  */
 public class SolutionTest {
     @Test
-    public void test(){
+    public void test() {
+        int[] height = {1, 8, 6, 2, 5, 4, 8, 3, 7};
+        Solution solution = new Solution();
+        int maxArea = solution.maxArea(height);
+        Assert.assertEquals(maxArea, 49);
+
     }
 }

@@ -1,6 +1,8 @@
 package code1;
 
 /**
+ * 两数之和
+ *
  * @author feigeswjtu.cyf
  * @version $Id: Solution.java, v 0.1 2021-02-25 22:29 feigeswjtu.cyf Exp $$
  */

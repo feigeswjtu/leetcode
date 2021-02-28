@@ -1,5 +1,6 @@
 package code14;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
@@ -9,5 +10,9 @@ import org.testng.annotations.Test;
 public class SolutionTest {
     @Test
     public void test(){
+        String[] strs =  {"flower","flow","flight"};
+        Solution solution = new Solution();
+        String s = solution.longestCommonPrefix(strs);
+        Assert.assertEquals(s, "fl");
     }
 }
