@@ -15,41 +15,63 @@ public class Solution {
      * @return
      */
     public int findKthLargest(int[] nums, int k) {
-        int heapSize = nums.length;
-        buildMaxHeap(nums, heapSize);
-        for (int i = nums.length - 1; i >= nums.length - k + 1; --i) {
-            swap(nums, 0, i);
-            --heapSize;
-            maxHeapify(nums, 0, heapSize);
+        buildBigHeap(nums);
+        int length = nums.length;
+
+        for (int i = 0; i < k; i++) {
+            swap(nums, 0, --length);
+            heapSwitch(nums, 0, length);
         }
-        return nums[0];
+
+
+        return nums[length];
     }
 
-    public void buildMaxHeap(int[] a, int heapSize) {
-        for (int i = heapSize / 2; i >= 0; --i) {
-            maxHeapify(a, i, heapSize);
-        }
-    }
-
-    public void maxHeapify(int[] a, int i, int heapSize) {
-        int l = i * 2 + 1, r = i * 2 + 2, largest = i;
-        if (l < heapSize && a[l] > a[largest]) {
-            largest = l;
-        }
-        if (r < heapSize && a[r] > a[largest]) {
-            largest = r;
-        }
-        if (largest != i) {
-            swap(a, i, largest);
-            maxHeapify(a, largest, heapSize);
+    /**
+     * 堆排序
+     */
+    private void buildBigHeap(int[] nums) {
+        for (int i = nums.length / 2; i >= 0; --i) {
+            heapSwitch(nums, i, nums.length);
         }
     }
 
-    public void swap(int[] a, int i, int j) {
-        int temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
+
+    /**
+     * 构建大顶堆
+     *
+     * @param nums
+     * @param i
+     * @param n
+     */
+    private void heapSwitch(int[] nums, int i, int n) {
+        int maxIndex = i;
+        int leftIndex = i * 2 + 1;
+        int rightIndex = i * 2 + 2;
+        if (leftIndex < n && nums[leftIndex] > nums[maxIndex]) {
+            maxIndex = leftIndex;
+        }
+
+        if (rightIndex < n && nums[rightIndex] > nums[maxIndex]) {
+            maxIndex = rightIndex;
+        }
+
+        if (maxIndex != i) {
+            swap(nums, maxIndex, i);
+            heapSwitch(nums, maxIndex, n);
+        }
     }
 
+    /**
+     * 交换
+     * @param nums
+     * @param i
+     * @param j
+     */
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
 
 }

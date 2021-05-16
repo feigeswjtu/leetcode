@@ -11,6 +11,7 @@ import java.util.Deque;
  */
 public class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
+        // 链表为null
         if (head == null) {
             return head;
         }
@@ -25,7 +26,9 @@ public class Solution {
         int distance = 0;
 
         ListNode headTemp = visualHead;
+        // 循环处理
         while (end != null) {
+            // 当距离达到k时进行翻转
             if (distance == k - 1) {
                 reverse(headTemp, begin, end);
                 headTemp = begin;
@@ -41,16 +44,26 @@ public class Solution {
         return visualHead.next;
     }
 
+    /**
+     * 翻转
+     * @param head
+     * @param begin
+     * @param end
+     */
     private void reverse(ListNode head, ListNode begin, ListNode end) {
+        // 队列存储
         Deque<ListNode> deque = new ArrayDeque<ListNode>();
         ListNode endNext = end.next;
+
+        // 队列存储
         while (begin != end){
             deque.push(begin);
             begin = begin.next;
-        };
+        }
         deque.push(end);
 
 
+        // 翻转
         while (!deque.isEmpty()){
             ListNode pop = deque.pop();
             head.next = pop;

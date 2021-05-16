@@ -20,7 +20,7 @@ public class Solution {
             }
 
             res = res * 10 + temp;
-            x = x/10;
+            x = x / 10;
 
         }
         return res;

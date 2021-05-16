@@ -11,23 +11,28 @@ import java.util.Set;
  */
 public class Solution {
     public int lengthOfLongestSubstring(String s) {
-        if (s == null || s.isEmpty()){
+        // 字符串为空
+        if (s == null || s.isEmpty()) {
             return 0;
         }
 
+        // hash存储字符串
         Set<Character> hashSet = new HashSet<Character>();
         int length = s.length();
         int indexLeft = 0;
         int indexRight = 0;
         int maxLength = 0;
-        while(indexRight < length){
-            if (!hashSet.contains(s.charAt(indexRight))){
+
+        while (indexRight < length) {
+            // 如果在hashSet里不存在，则indexRight++
+            if (!hashSet.contains(s.charAt(indexRight))) {
                 hashSet.add(s.charAt(indexRight));
                 indexRight++;
-            }else {
+            } else {
                 hashSet.remove(s.charAt(indexLeft));
                 indexLeft++;
             }
+            // 找到最大长度
             maxLength = Math.max(maxLength, indexRight - indexLeft);
         }
 

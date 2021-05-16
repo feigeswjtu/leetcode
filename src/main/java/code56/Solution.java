@@ -15,13 +15,8 @@ public class Solution {
             return intervals;
         }
 
-        Arrays.sort(intervals, new Comparator<int[]>() {
-
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o1[0] - o2[0];
-            }
-        });
+        // 先进行排序
+        Arrays.sort(intervals, Comparator.comparingInt(o -> o[0]));
 
         List<int[]> list = new ArrayList<int[]>();
 
@@ -34,6 +29,7 @@ public class Solution {
 
         for (int i = 1; i < intervals.length; i++) {
             int[] interval = intervals[i];
+            // 从第2个区间开始处理
             if (interval[1] <= list.get(list.size() - 1)[1]) {
             } else if (interval[0] <= list.get(list.size() - 1)[1]) {
                 list.get(list.size() - 1)[1] = interval[1];

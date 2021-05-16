@@ -12,9 +12,10 @@ import java.util.Deque;
 class Solution {
     public int trap(int[] height) {
         int result = 0;
+        // 定义一个队列，存储索引index
         Deque<Integer> deque = new ArrayDeque<Integer>();
         for (int i = 0; i < height.length; i++) {
-            // 队列为空时，前面的高度都为0
+            // 栈为空时，前面的高度都为0
             if (deque.isEmpty() && height[i] == 0) {
                 continue;
             }
@@ -27,21 +28,27 @@ class Solution {
 
             Integer leftIndex = deque.peek();
 
+            // 如果当前柱子高度小于右边的高度则放入队列
             if (height[i] <= height[leftIndex]) {
                 deque.push(i);
                 continue;
             }
 
             int midHeight = height[i];
+
+            // 处理栈
             while (!deque.isEmpty()) {
 
+                // 获取一个值
                 leftIndex = deque.peek();
 
-                if (height[i] < height[leftIndex]){
+                // 如果当前柱子高度小于队列中取出的高度时
+                if (height[i] < height[leftIndex]) {
                     result += (height[i] - midHeight) * (i - leftIndex - 1);
                     break;
                 }
 
+                // 栈中弹出
                 leftIndex = deque.pop();
 
                 if (midHeight > height[leftIndex]) {

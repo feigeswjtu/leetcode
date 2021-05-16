@@ -8,13 +8,16 @@ package code14;
  */
 public class Solution {
     public String longestCommonPrefix(String[] strs) {
-        if (strs.length == 0){
+        if (strs.length == 0) {
             return "";
         }
+        // 公共前缀的index
         int prefixIndex = 0;
+        // 是否有公共前缀
         boolean hasCommonPrefix = true;
+
         while (hasCommonPrefix) {
-            if (strs[0].length()< prefixIndex + 1) {
+            if (strs[0].length() < prefixIndex + 1) {
                 break;
             }
             char c = strs[0].charAt(prefixIndex);
@@ -34,7 +37,7 @@ public class Solution {
             }
         }
 
-        return strs[0].substring(0,prefixIndex);
+        return strs[0].substring(0, prefixIndex);
     }
 
 }

@@ -7,7 +7,10 @@ import org.testng.annotations.Test;
  * @version $Id: SolutionTest.java, v 0.1 2021-02-26 11:21 feigeswjtu.cyf Exp $$
  */
 public class SolutionTest {
+    Solution solution = new Solution();
     @Test
     public void test(){
+        int[] nums = {5,2,3,1};
+        solution.sortArray(nums);
     }
 }
