@@ -19,9 +19,11 @@ public class Solution {
         int rightIndex = nums.length - 1;
         while (leftIndex <= rightIndex) {
             int midIndex = (leftIndex + rightIndex) / 2;
+            // 如果找到目标
             if (nums[midIndex] == target) {
+                // 找左边的边界
                 result[0] = findLeftIndex(nums, leftIndex, midIndex, target);
-
+                // 找右边的边界
                 result[1] = findRightIndex(nums, midIndex, rightIndex, target);
                 break;
             }

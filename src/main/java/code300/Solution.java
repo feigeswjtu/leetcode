@@ -4,11 +4,14 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 /**
+ * 最长递增子序列
+ *
  * @author feigeswjtu.cyf
  * @version $Id: Solution.java, v 0.1 2021-02-25 22:44 feigeswjtu.cyf Exp $$
  */
 class Solution {
     public int lengthOfLIS(int[] arrays) {
+        // TODO
         int maxLength = 0;
         Deque<Integer> deque = new ArrayDeque<Integer>();
         for (int i = 0; i < arrays.length; i++) {

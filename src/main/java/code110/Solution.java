@@ -10,28 +10,37 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class Solution {
     public boolean isBalanced(TreeNode root) {
-        if (root == null){
+        if (root == null) {
             return true;
         }
 
+        // 临时存储
         AtomicBoolean isBalance = new AtomicBoolean(true);
 
-        int leftHeight = getTreeHeight(root.left,isBalance);
+        // 看左边的高度
+        int leftHeight = getTreeHeight(root.left, isBalance);
+
+        // 看右边的高度
         int rightHeight = getTreeHeight(root.right, isBalance);
+        // 最终结果
         return isBalance.get() && Math.abs(leftHeight - rightHeight) <= 1;
     }
 
-    private int getTreeHeight(TreeNode root, AtomicBoolean isBalance){
-        if (root == null){
+    private int getTreeHeight(TreeNode root, AtomicBoolean isBalance) {
+        if (root == null) {
             return 0;
         }
 
-        int leftHeight = getTreeHeight(root.left,isBalance);
+        // 看左边的高度
+        int leftHeight = getTreeHeight(root.left, isBalance);
+        // 看右边的高度
         int rightHeight = getTreeHeight(root.right, isBalance);
 
-        if (Math.abs(leftHeight - rightHeight) > 1){
+        // 如果左右高度大于1设置为false
+        if (Math.abs(leftHeight - rightHeight) > 1) {
             isBalance.set(false);
         }
+        // 返回高度+1
         return Math.max(leftHeight, rightHeight) + 1;
     }
 }

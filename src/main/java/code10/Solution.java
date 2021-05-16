@@ -8,12 +8,15 @@ package code10;
  */
 public class Solution {
     public boolean isMatch(String s, String p) {
+        // 处理原始数据
         s = " " + s;
         p = " " + p;
         int sLength = s.length();
         int pLength = p.length();
 
+        // s的前i个字符与p中的前j个字符是否能够匹配
         boolean[][] dp = new boolean[sLength + 1][pLength + 1];
+        // 第一个字符肯定可以
         dp[0][0] = true;
         for (int i = 1; i <= sLength; i++) {
             for (int j = 1; j <= pLength; j++) {

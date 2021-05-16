@@ -20,6 +20,7 @@ public class Solution {
             return result;
         }
 
+        // 第几个数字是否已用
         boolean[] used = new boolean[length];
         List<Integer> path = new ArrayList<>();
 
@@ -30,12 +31,15 @@ public class Solution {
     private void dfs(int[] nums, int length, int depth,
                      List<Integer> path, boolean[] used,
                      List<List<Integer>> result) {
+        // 如果深度等于长度
         if (depth == length) {
             result.add(path);
             return;
         }
 
+        // 每个都用一次
         for (int i = 0; i < length; i++) {
+            // 如果当前值没有用，则用
             if (!used[i]) {
                 // 1、每一次尝试都创建新的变量表示当前的"状态"
                 List<Integer> newPath = new ArrayList<>(path);

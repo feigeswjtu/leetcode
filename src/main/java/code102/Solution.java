@@ -13,31 +13,41 @@ import java.util.Queue;
  */
 public class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
+        // 结果值
         List<List<Integer>> result = new ArrayList<>();
-        if (root == null){
+        // 如果root为null则直接返回
+        if (root == null) {
             return result;
         }
 
 
+        // 存放层序信息
         Queue<LevelTreeNode> queue = new ArrayDeque<>();
+        // 层序信息
         LevelTreeNode levelTreeNode = new LevelTreeNode(0, root);
 
         queue.add(levelTreeNode);
 
         while (!queue.isEmpty()) {
             LevelTreeNode levelTreeNodeTemp = queue.poll(); // Java 的 pop 写作 poll()
+            // 数据
             List<Integer> data;
+            // 如果结果个数大于队列里的层序则取出来值
             if (result.size() > levelTreeNodeTemp.level) {
                 data = result.get(levelTreeNodeTemp.level);
-            }else {
+                // 否则新增一个值
+            } else {
                 data = new ArrayList<>();
                 result.add(levelTreeNodeTemp.level, data);
             }
+            // data里新增数据
             data.add(levelTreeNodeTemp.node.val);
 
+            // 左节点入队列
             if (levelTreeNodeTemp.node.left != null) {
                 queue.add(new LevelTreeNode(levelTreeNodeTemp.level + 1, levelTreeNodeTemp.node.left));
             }
+            // 右节点入队列
             if (levelTreeNodeTemp.node.right != null) {
                 queue.add(new LevelTreeNode(levelTreeNodeTemp.level + 1, levelTreeNodeTemp.node.right));
             }

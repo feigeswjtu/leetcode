@@ -15,13 +15,22 @@ public class Solution {
         return reference.get();
     }
 
-    boolean dfs(AtomicReference<TreeNode> reference, TreeNode root, TreeNode p, TreeNode q){
+    /**
+     * 深度优先搜索
+     *
+     * @param reference
+     * @param root
+     * @param p
+     * @param q
+     * @return
+     */
+    boolean dfs(AtomicReference<TreeNode> reference, TreeNode root, TreeNode p, TreeNode q) {
 
         if (root == null) return false;
         boolean lson = dfs(reference, root.left, p, q);
         boolean rson = dfs(reference, root.right, p, q);
         if ((lson && rson) || ((root.val == p.val || root.val == q.val) && (lson || rson))) {
-             reference.set(root);
+            reference.set(root);
         }
         return lson || rson || (root.val == p.val || root.val == q.val);
     }
