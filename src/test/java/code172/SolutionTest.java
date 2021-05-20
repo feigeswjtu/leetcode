@@ -14,7 +14,6 @@ public class SolutionTest {
     public void test() {
         for (int i = 0; i < 30; i++) {
             int value = i*10;
-            System.out.println(solution.trailingZeroes1(value));
             System.out.println(solution.trailingZeroes(value));
             System.out.println("-----");
 

@@ -1,8 +1,5 @@
 package code300;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-
 /**
  * 最长递增子序列
  *
@@ -11,29 +8,25 @@ import java.util.Deque;
  */
 class Solution {
     public int lengthOfLIS(int[] arrays) {
-        // TODO
-        int maxLength = 0;
-        Deque<Integer> deque = new ArrayDeque<Integer>();
-        for (int i = 0; i < arrays.length; i++) {
-            if (deque.isEmpty()) {
-                deque.push(arrays[i]);
-                maxLength = 1;
-                continue;
-            }
+        if (arrays.length <= 1) {
+            return arrays.length;
+        }
+        int[] maxLengthArray = new int[arrays.length];
+        maxLengthArray[0] = 1;
+        int maxLength = maxLengthArray[0];
 
-            while (!deque.isEmpty()) {
-                Integer leftValue = deque.peek();
-                if (arrays[i] > leftValue) {
-                    break;
-                } else if (arrays[i] < leftValue) {
-                    deque.pop();
-                } else {
-                    break;
+        for (int i = 1; i < arrays.length; i++) {
+            maxLengthArray[i] = 1;
+            for (int j = 0; j < i; j++) {
+                if (arrays[i] > arrays[j]) {
+                    maxLengthArray[i] = Math.max(maxLengthArray[i], maxLengthArray[j] + 1);
                 }
             }
-            deque.push(arrays[i]);
-            maxLength = Math.max(maxLength, deque.size());
+
+            maxLength = Math.max(maxLength, maxLengthArray[i]);
+
         }
+
         return maxLength;
     }
 }

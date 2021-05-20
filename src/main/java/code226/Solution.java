@@ -6,8 +6,14 @@ package code226;
  */
 public class Solution {
     public TreeNode invertTree(TreeNode root) {
-        // TODO
-        return null;
+        if (root == null) {
+            return null;
+        }
+        TreeNode left = invertTree(root.left);
+        TreeNode right = invertTree(root.right);
+        root.left = right;
+        root.right = left;
+        return root;
     }
 }
 
