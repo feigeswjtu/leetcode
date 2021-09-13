@@ -7,6 +7,26 @@ package code98;
  * @version $Id: Solution.java, v 0.1 2021-02-26 11:21 feigeswjtu.cyf Exp $$
  */
 public class Solution {
+    public boolean isValidBSTV2(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+
+        return bst(root, Long.MAX_VALUE, Long.MIN_VALUE);
+    }
+
+    private boolean bst(TreeNode root, long maxValue, long minValue) {
+        if (root == null) {
+            return true;
+        }
+
+        if (root.val >= maxValue || root.val <= minValue) {
+            return false;
+        }
+
+        return bst(root.left, root.val, minValue) && bst(root.right, maxValue, root.val);
+    }
+
     public boolean isValidBST(TreeNode root) {
         if (root == null) {
             return true;
