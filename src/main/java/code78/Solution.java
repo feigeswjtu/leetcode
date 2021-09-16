@@ -10,6 +10,11 @@ import java.util.List;
  * @version $Id: Solution.java, v 0.1 2021-02-26 11:21 feigeswjtu.cyf Exp $$
  */
 public class Solution {
+    /**
+     * 位运算解法
+     * @param nums
+     * @return
+     */
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         int n = nums.length;
@@ -30,6 +35,12 @@ public class Solution {
 
     }
 
+    /**
+     * dfs解法
+     *
+     * @param nums
+     * @return
+     */
     public List<List<Integer>> subsets1(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> temp = new ArrayList<>();

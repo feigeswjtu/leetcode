@@ -10,9 +10,10 @@ public class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         // 记录两个指针的距离
         int distance = 0;
+        // 慢指针
         ListNode slowNode = null;
+        // 快指针
         ListNode fastNode = head;
-
 
         while (fastNode != null) {
             // 距离达到n时，慢指针开始移动

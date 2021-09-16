@@ -4,6 +4,7 @@ import java.util.*;
 
 /**
  * 电话号码的字母组合
+ * 迭代法
  *
  * @author feigeswjtu.cyf
  * @version $Id: Solution.java, v 0.1 2021-02-26 11:21 feigeswjtu.cyf Exp $$

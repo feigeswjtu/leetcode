@@ -10,6 +10,12 @@ import java.util.Map;
  * @version $Id: Solution.java, v 0.1 2021-02-26 11:21 feigeswjtu.cyf Exp $$
  */
 public class Solution {
+    /**
+     * 时间换空间的解法
+     * 
+     * @param nums
+     * @return
+     */
     public int singleNumber1(int[] nums) {
         int value = 0;
         Map<Integer, Integer> map = new HashMap<>(nums.length / 3);
@@ -30,7 +36,12 @@ public class Solution {
         return value;
     }
 
-
+    /**
+     * 位运算解法
+     * 
+     * @param nums
+     * @return
+     */
     public int singleNumber(int[] nums) {
         int value0 = 0;
         int value1 = 0;
@@ -38,8 +49,6 @@ public class Solution {
             value0 = value0 ^ num & ~value1;
             value1 = value1 ^ num & ~value0;
         }
-
-
 
         return value0;
     }

@@ -7,6 +7,11 @@ package code98;
  * @version $Id: Solution.java, v 0.1 2021-02-26 11:21 feigeswjtu.cyf Exp $$
  */
 public class Solution {
+    /**
+     * 通过入参来判断最大值和最小值
+     * @param root
+     * @return
+     */
     public boolean isValidBSTV2(TreeNode root) {
         if (root == null) {
             return true;
@@ -27,6 +32,11 @@ public class Solution {
         return bst(root.left, root.val, minValue) && bst(root.right, maxValue, root.val);
     }
 
+    /**
+     * 最大值和最小值通过对象临时保存
+     * @param root
+     * @return
+     */
     public boolean isValidBST(TreeNode root) {
         if (root == null) {
             return true;

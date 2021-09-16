@@ -2,6 +2,7 @@ package code102;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Queue;
 
@@ -12,14 +13,55 @@ import java.util.Queue;
  * @version $Id: Solution.java, v 0.1 2021-02-26 11:21 feigeswjtu.cyf Exp $$
  */
 public class Solution {
+    /**
+     * 优化做法
+     * 
+     * @param root
+     * @return
+     */
     public List<List<Integer>> levelOrder(TreeNode root) {
+        if (root == null) {
+            return Collections.emptyList();
+        }
+        List<List<Integer>> result = new ArrayList<>();
+
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            List<Integer> list = new ArrayList<>(size);
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                list.add(node.val);
+
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+
+            }
+
+            result.add(list);
+        }
+
+        return result;
+    }
+
+    /**
+     * 方法二 记录每个节点的位置
+     * 
+     * @param root
+     * @return
+     */
+    public List<List<Integer>> levelOrder1(TreeNode root) {
         // 结果值
         List<List<Integer>> result = new ArrayList<>();
         // 如果root为null则直接返回
         if (root == null) {
             return result;
         }
-
 
         // 存放层序信息
         Queue<LevelTreeNode> queue = new ArrayDeque<>();
@@ -72,8 +114,7 @@ class TreeNode {
     TreeNode left;
     TreeNode right;
 
-    TreeNode() {
-    }
+    TreeNode() {}
 
     TreeNode(int val) {
         this.val = val;
