@@ -1,5 +1,6 @@
 package code79;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
@@ -9,5 +10,13 @@ import org.testng.annotations.Test;
 public class SolutionTest {
     @Test
     public void test(){
+        Solution solution = new Solution();
+        char[][] board =
+
+                {{'A','B','C','E'},{'S','F','C','S'},{'A','D','E','E'}};
+        boolean see = solution.exist(board, "ABCB");
+        Assert.assertTrue(see);
     }
+
+
 }
