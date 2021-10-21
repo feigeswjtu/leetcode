@@ -12,7 +12,7 @@ import java.util.Deque;
 class Solution {
     public int trap(int[] height) {
         int result = 0;
-        // 定义一个队列，存储索引index
+        // 定义一个栈，存储索引index
         Deque<Integer> deque = new ArrayDeque<Integer>();
         for (int i = 0; i < height.length; i++) {
             // 栈为空时，前面的高度都为0
@@ -20,6 +20,7 @@ class Solution {
                 continue;
             }
 
+            // 如果栈为空，进入栈
             if (deque.isEmpty()) {
                 deque.push(i);
                 continue;
@@ -27,14 +28,15 @@ class Solution {
 
 
             Integer leftIndex = deque.peek();
+            // 这个变量很重要，通过它来计算面积的
+            int midHeight = height[i];
 
-            // 如果当前柱子高度小于右边的高度则放入队列
-            if (height[i] <= height[leftIndex]) {
+            // 如果当前柱子高度小于等于右边的高度则放入队列
+            if (midHeight <= height[leftIndex]) {
                 deque.push(i);
                 continue;
             }
 
-            int midHeight = height[i];
 
             // 处理栈
             while (!deque.isEmpty()) {
@@ -48,14 +50,8 @@ class Solution {
                     break;
                 }
 
-                // 栈中弹出
+                // 如果当前柱子高度高于队列中取出的高度时，栈中弹出
                 leftIndex = deque.pop();
-
-                if (midHeight > height[leftIndex]) {
-                    midHeight = height[leftIndex];
-                    continue;
-                }
-
                 result += (height[leftIndex] - midHeight) * (i - leftIndex - 1);
                 midHeight = height[leftIndex];
             }

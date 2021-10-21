@@ -32,21 +32,24 @@ public class Solution {
         }
 
         int length = s.length();
+        // 声明栈
         Deque<Character> deque = new ArrayDeque<>();
         for (int i = 0; i < length; i++) {
             Character c = s.charAt(i);
-            // 左边的放入队列
+            // 左边的放入栈
             if (leftValidCharMap.containsKey(c)) {
                 deque.push(c);
                 continue;
             }
 
-            // 遇到右边的和队列里对比
+            // 遇到右边的括号和栈顶的做对比
             if (rightValidCharMap.containsKey(c)) {
+                // 如果队列为空则返回false
                 if (deque.isEmpty()) {
                     return false;
                 }
                 Character pop = deque.pop();
+                // 如果栈顶的元素和当前元素配对，则继续
                 if (leftValidCharMap.get(pop).equals(c)) {
                     continue;
                 } else {

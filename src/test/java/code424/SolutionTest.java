@@ -1,5 +1,6 @@
 package code424;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
@@ -9,5 +10,9 @@ import org.testng.annotations.Test;
 public class SolutionTest {
     @Test
     public void test(){
+        Solution solution = new Solution();
+        int count = solution.characterReplacement("AABCABBB", 2);
+        Assert.assertEquals(count, 6);
+
     }
 }

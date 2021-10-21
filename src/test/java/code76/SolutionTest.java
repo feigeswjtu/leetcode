@@ -1,5 +1,6 @@
 package code76;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
@@ -9,5 +10,8 @@ import org.testng.annotations.Test;
 public class SolutionTest {
     @Test
     public void test(){
+        Solution solution = new Solution();
+        String s = solution.minWindow("ADOBECODEBANC", "ABC");
+        Assert.assertEquals(s, "BANC");
     }
 }

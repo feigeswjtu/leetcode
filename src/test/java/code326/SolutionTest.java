@@ -1,5 +1,6 @@
 package code326;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
@@ -9,5 +10,8 @@ import org.testng.annotations.Test;
 public class SolutionTest {
     @Test
     public void test(){
+        Solution solution = new Solution();
+        boolean powerOfThree = solution.isPowerOfThree(19684);
+        Assert.assertTrue(powerOfThree);
     }
 }

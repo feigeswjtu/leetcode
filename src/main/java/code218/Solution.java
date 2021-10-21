@@ -16,8 +16,8 @@ public class Solution {
          **/
         PriorityQueue<int[]> priorityQueue = new PriorityQueue<>((a, b) -> a[0] == b[0] ? a[1] - b[1] : a[0] - b[0]);
         for (int[] building : buildings) {
-            priorityQueue.offer(new int[]{building[0], -building[2]});
-            priorityQueue.offer(new int[]{building[1], building[2]});
+            priorityQueue.offer(new int[] {building[0], -building[2]});
+            priorityQueue.offer(new int[] {building[1], building[2]});
         }
 
         // 结果集
@@ -58,6 +58,5 @@ public class Solution {
 
         return result;
     }
-
 
 }
