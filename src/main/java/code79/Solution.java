@@ -16,7 +16,7 @@ public class Solution {
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
                 boolean result = dfs(board, i, j, index, word, usedIndexs);
-                if (result){
+                if (result) {
                     return true;
                 }
             }
@@ -25,13 +25,13 @@ public class Solution {
         return false;
     }
 
-    private boolean dfs(char[][] board, int i, int j, int index, String word, boolean[][] usedIndexs){
+    private boolean dfs(char[][] board, int i, int j, int index, String word, boolean[][] usedIndexs) {
         boolean result = false;
-        if (i< 0 || i>= board.length){
+        if (i < 0 || i >= board.length) {
             return false;
         }
 
-        if (j< 0 || j >= board[0].length){
+        if (j < 0 || j >= board[0].length) {
             return false;
         }
 
@@ -39,27 +39,24 @@ public class Solution {
             return false;
         }
 
-        if (index >= word.length()){
+        if (index >= word.length()) {
             return false;
         }
 
-        if (index == word.length()-1){
+        if (index == word.length() - 1) {
             return board[i][j] == word.charAt(index);
         }
 
-        if (board[i][j] != word.charAt(index)){
+        if (board[i][j] != word.charAt(index)) {
             return false;
         }
 
-            usedIndexs[i][j] = true;
-            result = dfs(board, i, j+1, index+1, word, usedIndexs)
-                    || dfs(board, i+1, j, index+1, word, usedIndexs)
-                    || dfs(board, i, j-1, index+1, word, usedIndexs)
-                    || dfs(board, i-1, j, index+1, word, usedIndexs);
-            usedIndexs[i][j] = false;
+        usedIndexs[i][j] = true;
+        result = dfs(board, i, j + 1, index + 1, word, usedIndexs) || dfs(board, i + 1, j, index + 1, word, usedIndexs)
+            || dfs(board, i, j - 1, index + 1, word, usedIndexs) || dfs(board, i - 1, j, index + 1, word, usedIndexs);
+        usedIndexs[i][j] = false;
 
         return result;
-
 
     }
 }
