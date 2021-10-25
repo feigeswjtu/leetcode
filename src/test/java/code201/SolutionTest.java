@@ -1,5 +1,6 @@
 package code201;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
@@ -9,5 +10,8 @@ import org.testng.annotations.Test;
 public class SolutionTest {
     @Test
     public void test(){
+        Solution solution = new Solution();
+        int i = solution.rangeBitwiseAnd(5, 7);
+        Assert.assertEquals(i, 4);
     }
 }

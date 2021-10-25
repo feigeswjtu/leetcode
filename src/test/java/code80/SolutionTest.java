@@ -33,4 +33,14 @@ public class SolutionTest {
         Assert.assertEquals(i, 2);
 
     }
+
+    @Test
+    public void test3() {
+        int[] nums = {0,0,1,1,1,1,2,3,3};
+        int i = solution.removeDuplicates(nums);
+        Assert.assertEquals(i, 7);
+
+    }
+
+
 }

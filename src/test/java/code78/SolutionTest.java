@@ -1,6 +1,9 @@
 package code78;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 /**
  * @author feigeswjtu.cyf
@@ -8,6 +11,10 @@ import org.testng.annotations.Test;
  */
 public class SolutionTest {
     @Test
-    public void test(){
+    public void test() {
+        Solution solution = new Solution();
+        int[] nums = {1, 2, 3};
+        List<List<Integer>> lists = solution.subsets1(nums);
+        Assert.assertEquals(lists.size(), 9);
     }
 }

@@ -14,7 +14,8 @@ public class Solution {
     int process(int[] nums, int k) {
         int index = 0;
         for (int x : nums) {
-            if (index < k || nums[index - k] != x) nums[index++] = x;
+            if (index < k || nums[index - k] != x)
+                nums[index++] = x;
         }
         return index;
     }

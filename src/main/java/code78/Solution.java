@@ -12,6 +12,7 @@ import java.util.List;
 public class Solution {
     /**
      * 位运算解法
+     * 
      * @param nums
      * @return
      */
@@ -44,19 +45,23 @@ public class Solution {
     public List<List<Integer>> subsets1(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> temp = new ArrayList<>();
-        dfs(result, temp, 0, nums.length, nums);
+        result.add(new ArrayList<>(temp));
+        for (int i = 0; i < nums.length; i++) {
+            dfs(result, temp, i, nums);
+        }
         return result;
     }
 
-    public void dfs(List<List<Integer>> result, List<Integer> temp, int useCount, int n, int[] nums) {
-        if (useCount == n) {
-            result.add(new ArrayList<>(temp));
+    public void dfs(List<List<Integer>> result, List<Integer> temp, int index, int[] nums) {
+        if (index == nums.length) {
             return;
         }
 
-        temp.add(nums[useCount]);
-        dfs(result, temp, useCount + 1, n, nums);
+        temp.add(nums[index]);
+        result.add(new ArrayList<>(temp));
+        for (int i = index; i < nums.length; i++) {
+            dfs(result, temp, i + 1, nums);
+        }
         temp.remove(temp.size() - 1);
-        dfs(result, temp, useCount + 1, n, nums);
     }
 }

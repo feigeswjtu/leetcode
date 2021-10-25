@@ -6,22 +6,25 @@ package code26;
  */
 public class Solution {
     public int removeDuplicates(int[] nums) {
-        if (nums.length <= 1) {
-            return nums.length;
+        int length = nums.length;
+        if (length == 1) {
+            return 1;
         }
-        int preIndex = 0;
-        int currentIndex = 1;
+        int left = 0;
+        int right = 1;
 
-        while (currentIndex < nums.length) {
-            if (nums[preIndex] != nums[currentIndex]) {
-                if (currentIndex - preIndex > 1) {
-                    nums[preIndex + 1] = nums[currentIndex];
-                }
-                preIndex++;
+        while (right < length) {
+            while (right < length && nums[right] == nums[left]) {
+                right++;
             }
-            currentIndex++;
+
+            if (right >= length){
+                break;
+            }
+
+            nums[++left] = nums[right++];
         }
 
-        return preIndex + 1;
+        return left + 1;
     }
 }

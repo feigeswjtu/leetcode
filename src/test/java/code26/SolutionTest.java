@@ -19,9 +19,9 @@ public class SolutionTest {
 
     @Test
     public void test1() {
-        int[] nums = {1, 2};
+        int[] nums = {1, 1};
         int index = solution.removeDuplicates(nums);
-        Assert.assertEquals(index, 2);
+        Assert.assertEquals(index, 1);
     }
 
     @Test
@@ -29,5 +29,11 @@ public class SolutionTest {
         int[] nums = {1, 1};
         int index = solution.removeDuplicates(nums);
         Assert.assertEquals(index, 1);
+    }
+    @Test
+    public void test4() {
+        int[] nums = {1, 2};
+        int index = solution.removeDuplicates(nums);
+        Assert.assertEquals(index, 2);
     }
 }
