@@ -7,23 +7,55 @@ package code121;
  * @version $Id: Solution.java, v 0.1 2021-02-26 11:21 feigeswjtu.cyf Exp $$
  */
 public class Solution {
-//    public int maxProfit(int[] prices) {
-//        if (prices.length <= 1) {
-//            return 0;
-//        }
-//        int maxPrice = 0;
-//        for (int leftIndex = 0; leftIndex < prices.length - 1; leftIndex++) {
-//
-//            for (int rightIndex = leftIndex; rightIndex < prices.length; rightIndex++) {
-//                if (prices[rightIndex] > prices[leftIndex]) {
-//                    maxPrice = Math.max(maxPrice, prices[rightIndex] - prices[leftIndex]);
-//                }
-//            }
-//        }
-//
-//
-//        return maxPrice;
-//    }
+    /**
+     * 动态规划
+     *
+     * @param prices
+     * @return
+     */
+    public int maxProfitV3(int[] prices) {
+        if (prices.length < 2) {
+            return 0;
+        }
+
+        int dp0 = 0;// 不持有当前股票
+        int dp1 = -prices[0]; // 持有当前股票
+
+        for (int i = 1; i < prices.length; i++) {
+            int price = prices[i];
+            dp0 = Math.max(dp0, dp1 + price);
+            dp1 = Math.max(dp1, -price);
+        }
+
+        return dp0;
+    }
+
+    /**
+     * 简单解法
+     *
+     * @param prices
+     * @return
+     */
+    public int maxProfitV2(int[] prices) {
+        int minPrice = Integer.MAX_VALUE;
+        int maxProfit = 0;
+        for (int price : prices) {
+            if (price < minPrice) {
+                minPrice = price;
+            } else if (price - minPrice > maxProfit) {
+                maxProfit = price - minPrice;
+            }
+        }
+
+        return maxProfit;
+    }
+
+    /**
+     * 双指针法
+     * 
+     * @param prices
+     * @return
+     */
 
     public int maxProfit(int[] prices) {
         if (prices.length <= 1) {

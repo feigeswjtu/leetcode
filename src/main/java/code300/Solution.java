@@ -7,6 +7,13 @@ package code300;
  * @version $Id: Solution.java, v 0.1 2021-02-25 22:44 feigeswjtu.cyf Exp $$
  */
 class Solution {
+    /**
+     * 两层循环，动态规划
+     *
+     *
+     * @param arrays
+     * @return
+     */
     public int lengthOfLIS(int[] arrays) {
         if (arrays.length <= 1) {
             return arrays.length;

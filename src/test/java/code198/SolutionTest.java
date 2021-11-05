@@ -1,5 +1,6 @@
 package code198;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
@@ -9,5 +10,9 @@ import org.testng.annotations.Test;
 public class SolutionTest {
     @Test
     public void test(){
+        Solution solution = new Solution();
+        int[] nums = {2,1,1,2};
+        int rob = solution.rob(nums);
+        Assert.assertEquals(rob, 4);
     }
 }
